@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A quick group poll to help choose the destination for our all-in 50th birthday trip."
+    />
+    <meta name="theme-color" content="#123c3a" />
+    <title>The Big 5-0 Trip Poll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+      <div class="shell hero__content">
+        <div class="eyebrow">The main event is coming</div>
+        <p class="hero__number" aria-hidden="true">50</p>
+        <h1>Where should we celebrate?</h1>
+        <p class="hero__intro">
+          Eight quick questions to turn a very long travel group chat into a very
+          short shortlist.
+        </p>
+        <div class="hero__meta" aria-label="Poll details">
+          <span>About 2 minutes</span>
+          <span>October 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="shell main-content">
+      <div class="progress-wrap" aria-hidden="true">
+        <div class="progress-copy">
+          <span>Your progress</span>
+          <span id="progress-label">0 of 10</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+
+      <form
+        class="poll-form"
+        id="trip-poll"
+        name="trip-preferences"
+        method="POST"
+        action="/thanks.html"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <p class="honeypot">
+          <label>
+            Do not fill this out if you are human:
+            <input name="bot-field" />
+          </label>
+        </p>
+
+        <section class="question question--identity" data-question>
+          <div class="question__heading">
+            <span class="question__number">First up</span>
+            <h2>Who are you?</h2>
+          </div>
+          <label class="text-label" for="name">Your name</label>
+          <input
+            class="text-input"
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            placeholder="So we know who voted"
+            required
+          />
+        </section>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">01</span>
+            <span class="question__title">Who is likely to join?</span>
+          </legend>
+          <div class="choices choices--three">
+            <label class="choice">
+              <input type="radio" name="who-is-joining" value="Adults only" required />
+              <span class="choice__body">
+                <span class="choice__icon" aria-hidden="true">🥂</span>
+                <span class="choice__title">Adults only</span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="who-is-joining" value="Children might join" />
+              <span class="choice__body">
+                <span class="choice__icon" aria-hidden="true">🤔</span>
+                <span class="choice__title">Children might join</span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="who-is-joining" value="Children will probably join" />
+              <span class="choice__body">
+                <span class="choice__icon" aria-hidden="true">👨‍👩‍👧</span>
+                <span class="choice__title">Children will probably join</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question data-limit="2">
+          <legend>
+            <span class="question__number">02</span>
+            <span class="question__title">Pick your two ideal holiday ingredients</span>
+          </legend>
+          <div class="question__hint">
+            Select exactly two
+            <span class="selection-count" aria-live="polite">0 of 2 selected</span>
+          </div>
+          <div class="choices choices--ingredients">
+            <label class="choice">
+              <input type="checkbox" name="ideal-ingredients[]" value="Beach, pool and a great villa" />
+              <span class="choice__body">
+                <span class="choice__icon" aria-hidden="true">☀️</span>
+                <span class="choice__title">Beach, pool and a great villa</span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="ideal-ingredients[]" value="Food, culture and exploring" />
+              <span class="choice__body">
+                <span class="choice__icon" aria-hidden="true">🥟</span>
+                <span class="choice__title">Food, culture and exploring</span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="ideal-ingredients[]" value="Wine, scenery and long lunches" />
+              <span class="choice__body">
+                <span class="choice__icon" aria-hidden="true">🍷</span>
+                <span class="choice__title">Wine, scenery and long lunches</span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="ideal-ingredients[]" value="Hiking, cycling and adventure" />
+              <span class="choice__body">
+                <span class="choice__icon" aria-hidden="true">🥾</span>
+                <span class="choice__title">Hiking, cycling and adventure</span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="ideal-ingredients[]" value="Resort, spa and minimal organising" />
+              <span class="choice__body">
+                <span class="choice__icon" aria-hidden="true">🧖</span>
+                <span class="choice__title">Resort, spa and minimal organising</span>
+              </span>
+            </label>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">03</span>
+            <span class="question__title">Preferred October weather</span>
+          </legend>
+          <div class="choices choices--two">
+            <label class="choice">
+              <input type="radio" name="preferred-weather" value="Warm and tropical" required />
+              <span class="choice__body"><span class="choice__title">Warm and tropical</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="preferred-weather" value="Mild and comfortable" />
+              <span class="choice__body"><span class="choice__title">Mild and comfortable</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="preferred-weather" value="Cooler mountain weather" />
+              <span class="choice__body"><span class="choice__title">Cooler mountain weather</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="preferred-weather" value="No preference" />
+              <span class="choice__body"><span class="choice__title">No preference</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">04</span>
+            <span class="question__title">Preferred trip style</span>
+          </legend>
+          <div class="choices choices--three">
+            <label class="choice">
+              <input type="radio" name="trip-style" value="Stay mainly in one place" required />
+              <span class="choice__body"><span class="choice__title">Stay mainly in one place</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="trip-style" value="Two bases with a little travelling" />
+              <span class="choice__body"><span class="choice__title">Two bases with a little travelling</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="trip-style" value="Road trip or touring holiday" />
+              <span class="choice__body"><span class="choice__title">Road trip or touring holiday</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">05</span>
+            <span class="question__title">Ideal trip length</span>
+          </legend>
+          <div class="choices choices--two">
+            <label class="choice">
+              <input type="radio" name="trip-length" value="4 to 5 nights" required />
+              <span class="choice__body"><span class="choice__title">4 to 5 nights</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="trip-length" value="6 to 7 nights" />
+              <span class="choice__body"><span class="choice__title">6 to 7 nights</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="trip-length" value="8 to 10 nights" />
+              <span class="choice__body"><span class="choice__title">8 to 10 nights</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="trip-length" value="Flexible" />
+              <span class="choice__body"><span class="choice__title">Flexible</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">06</span>
+            <span class="question__title">Comfortable daily budget per adult</span>
+          </legend>
+          <p class="question__description">
+            Excluding international flights. Assume twin-share accommodation, food,
+            local transport and activities.
+          </p>
+          <div class="choices choices--two">
+            <label class="choice">
+              <input type="radio" name="daily-budget" value="Under AUD 200 per day" required />
+              <span class="choice__body"><span class="choice__title">Under AUD 200 per day</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="daily-budget" value="AUD 200 to 350 per day" />
+              <span class="choice__body"><span class="choice__title">AUD 200 to 350 per day</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="daily-budget" value="AUD 350 to 550 per day" />
+              <span class="choice__body"><span class="choice__title">AUD 350 to 550 per day</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="daily-budget" value="Flexible for the right trip" />
+              <span class="choice__body"><span class="choice__title">Flexible for the right trip</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">07</span>
+            <span class="question__title">Travel tolerance</span>
+          </legend>
+          <div class="choices choices--three">
+            <label class="choice">
+              <input type="radio" name="travel-tolerance" value="Direct flights are important" required />
+              <span class="choice__body"><span class="choice__title">Direct flights are important</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="travel-tolerance" value="One sensible connection is fine" />
+              <span class="choice__body"><span class="choice__title">One sensible connection is fine</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="travel-tolerance" value="Happy to travel further for somewhere special" />
+              <span class="choice__body"><span class="choice__title">Happy to travel further for somewhere special</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question question--destinations" data-question data-limit="3">
+          <legend>
+            <span class="question__number">08</span>
+            <span class="question__title">Choose your top three</span>
+          </legend>
+          <div class="question__hint">
+            Do not overthink it
+            <span class="selection-count" aria-live="polite">0 of 3 selected</span>
+          </div>
+          <div class="choices choices--destinations">
+            <label class="choice choice--destination">
+              <input type="checkbox" name="top-destinations[]" value="Bali" />
+              <span class="choice__body"><span class="choice__title">Bali</span><span class="choice__sub">Villa life</span></span>
+            </label>
+            <label class="choice choice--destination">
+              <input type="checkbox" name="top-destinations[]" value="Taiwan" />
+              <span class="choice__body"><span class="choice__title">Taiwan</span><span class="choice__sub">Food and culture</span></span>
+            </label>
+            <label class="choice choice--destination">
+              <input type="checkbox" name="top-destinations[]" value="Fiji" />
+              <span class="choice__body"><span class="choice__title">Fiji</span><span class="choice__sub">Easy island time</span></span>
+            </label>
+            <label class="choice choice--destination">
+              <input type="checkbox" name="top-destinations[]" value="Margaret River" />
+              <span class="choice__body"><span class="choice__title">Margaret River</span><span class="choice__sub">Wine and coastline</span></span>
+            </label>
+            <label class="choice choice--destination">
+              <input type="checkbox" name="top-destinations[]" value="Japan" />
+              <span class="choice__body"><span class="choice__title">Japan</span><span class="choice__sub">Autumn and onsen</span></span>
+            </label>
+            <label class="choice choice--destination">
+              <input type="checkbox" name="top-destinations[]" value="Central Otago, New Zealand" />
+              <span class="choice__body"><span class="choice__title">Central Otago</span><span class="choice__sub">Mountains and pinot</span></span>
+            </label>
+            <label class="choice choice--destination">
+              <input type="checkbox" name="top-destinations[]" value="Darwin and Kakadu" />
+              <span class="choice__body"><span class="choice__title">Darwin and Kakadu</span><span class="choice__sub">The wild card</span></span>
+            </label>
+            <label class="choice choice--destination">
+              <input type="checkbox" name="top-destinations[]" value="Somewhere more adventurous" />
+              <span class="choice__body"><span class="choice__title">Somewhere adventurous</span><span class="choice__sub">Komodo, Nepal or Bhutan</span></span>
+            </label>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </fieldset>
+
+        <fieldset class="question question--date" data-question>
+          <legend>
+            <span class="question__number">Bonus</span>
+            <span class="question__title">Are you available 26 September to 4 October?</span>
+          </legend>
+          <p class="question__description">
+            This overlaps Victorian and NSW school holidays and includes Hong Kong's
+            1 October public holiday.
+          </p>
+          <div class="choices choices--three choices--compact">
+            <label class="choice">
+              <input type="radio" name="date-availability" value="Yes" required />
+              <span class="choice__body"><span class="choice__title">Yes</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="date-availability" value="No" />
+              <span class="choice__body"><span class="choice__title">No</span></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="date-availability" value="Maybe" />
+              <span class="choice__body"><span class="choice__title">Maybe</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <section class="question question--comments">
+          <div class="question__heading">
+            <span class="question__number">Anything else?</span>
+            <h2>Deal-breakers, bright ideas or strong opinions</h2>
+          </div>
+          <label class="sr-only" for="comments">Optional comments</label>
+          <textarea
+            class="text-input text-input--area"
+            id="comments"
+            name="comments"
+            rows="4"
+            placeholder="Optional, but this is your moment..."
+          ></textarea>
+        </section>
+
+        <div class="submit-panel">
+          <p>Ready to throw your hat in the ring?</p>
+          <button class="submit-button" type="submit">
+            Submit my vote
+            <span aria-hidden="true">→</span>
+          </button>
+          <p class="submit-note">Your answers will only be used to plan the trip.</p>
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <div class="shell">Here’s to 50 years and one excellent holiday.</div>
+    </footer>
+  </body>
+</html>
