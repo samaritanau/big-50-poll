@@ -10,6 +10,15 @@ if (form) {
     const textInput = question.querySelector("input[type='text']");
     if (textInput) return textInput.value.trim().length > 0;
 
+    const dateInputs = [...question.querySelectorAll("input[type='date']")];
+    if (dateInputs.length) {
+      const [from, until] = dateInputs;
+      const radios = [...question.querySelectorAll("input[type='radio']")];
+      const datesAreComplete = Boolean(from.value && until.value && from.value <= until.value);
+      const radioIsComplete = !radios.length || radios.some((radio) => radio.checked);
+      return datesAreComplete && radioIsComplete;
+    }
+
     const limit = Number(question.dataset.limit || 0);
     if (limit) {
       return question.querySelectorAll("input[type='checkbox']:checked").length === limit;
@@ -45,17 +54,42 @@ if (form) {
     }
   };
 
+  const dateRange = form.querySelector("[data-date-range]");
+
+  const updateDateRangeValidity = () => {
+    if (!dateRange) return true;
+
+    const question = dateRange.closest(".question");
+    const from = dateRange.querySelector("#available-from");
+    const until = dateRange.querySelector("#available-until");
+    const error = question.querySelector(".field-error");
+    const datesAreReversed = Boolean(from.value && until.value && from.value > until.value);
+
+    until.setCustomValidity(datesAreReversed ? "Return date must be on or after departure date." : "");
+    question.classList.toggle("has-error", datesAreReversed);
+    error.textContent = datesAreReversed ? "Return date must be on or after departure date." : "";
+    error.classList.toggle("is-visible", datesAreReversed);
+
+    return !datesAreReversed;
+  };
+
   limitedQuestions.forEach(updateLimitedQuestion);
   updateProgress();
 
   form.addEventListener("input", (event) => {
     const limitedQuestion = event.target.closest("[data-limit]");
     if (limitedQuestion) updateLimitedQuestion(limitedQuestion);
+    if (event.target.matches("input[type='date']")) updateDateRangeValidity();
     updateProgress();
   });
 
   form.addEventListener("submit", (event) => {
     let firstInvalidQuestion = null;
+
+    if (!updateDateRangeValidity()) {
+      event.preventDefault();
+      firstInvalidQuestion = dateRange.closest(".question");
+    }
 
     limitedQuestions.forEach((question) => {
       const limit = Number(question.dataset.limit);

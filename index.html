@@ -334,6 +334,39 @@
               <span class="choice__body"><span class="choice__title">No</span></span>
             </label>
           </div>
+          <div class="date-range__heading">
+            <span>Your available window</span>
+            <span>Adjust these dates if needed</span>
+          </div>
+          <div class="date-range" data-date-range>
+            <label class="date-field" for="available-from">
+              <span>Earliest departure</span>
+              <input
+                id="available-from"
+                name="available-from"
+                type="date"
+                min="2026-09-20"
+                max="2026-10-31"
+                value="2026-09-26"
+                required
+              />
+            </label>
+            <div class="date-range__connector" aria-hidden="true">to</div>
+            <label class="date-field" for="available-until">
+              <span>Latest return</span>
+              <input
+                id="available-until"
+                name="available-until"
+                type="date"
+                min="2026-09-20"
+                max="2026-10-31"
+                value="2026-10-04"
+                required
+              />
+            </label>
+          </div>
+          <p class="date-range__note">Select dates between 20 September and 31 October 2026.</p>
+          <p class="field-error" role="alert"></p>
         </fieldset>
 
         <section class="question question--comments">
