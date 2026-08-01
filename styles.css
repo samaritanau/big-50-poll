@@ -312,6 +312,10 @@ legend {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.choices--binary {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .choice {
   position: relative;
   display: block;
@@ -585,8 +589,8 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .choices--compact {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .choices--binary.choices--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .choices--compact .choice__body {
