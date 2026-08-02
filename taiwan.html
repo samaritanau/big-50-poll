@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=2" />
+    <link rel="stylesheet" href="/styles.css?v=3" />
     <script src="/script.js?v=2" defer></script>
   </head>
   <body>
@@ -46,24 +46,60 @@
 
         <div class="route-grid">
           <article class="route-card">
+            <figure class="route-card__photo">
+              <img
+                src="/assets/taiwan/taipei-night-market.jpg"
+                alt="A busy night market street in Taipei"
+                width="1200"
+                height="858"
+                loading="lazy"
+              />
+            </figure>
             <span class="route-card__tag">Keep it simple</span>
             <h3>Taipei home base</h3>
             <p>Food, bars and culture, with day trips to Beitou, Jiufen and the north coast.</p>
             <div class="route-card__meta">One hotel · Maximum lunch time</div>
           </article>
           <article class="route-card route-card--featured">
+            <figure class="route-card__photo">
+              <img
+                src="/assets/taiwan/yilan-landscape.jpg"
+                alt="A mountain lake surrounded by trees in Yilan"
+                width="1200"
+                height="801"
+                loading="lazy"
+              />
+            </figure>
             <span class="route-card__tag">Our best fit</span>
             <h3>Taipei + Jiaoxi</h3>
             <p>A few nights in Taipei, then Yilan for hot springs, countryside and whisky.</p>
             <div class="route-card__meta">Two bases · Food + relaxation</div>
           </article>
           <article class="route-card">
+            <figure class="route-card__photo">
+              <img
+                src="/assets/taiwan/sun-moon-lake.jpg"
+                alt="Sun Moon Lake with palm trees and green mountains"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </figure>
             <span class="route-card__tag">Lake and mountains</span>
             <h3>Taipei + Sun Moon Lake</h3>
             <p>Taipei first, then lakeside cycling, tea country and a slower finish.</p>
             <div class="route-card__meta">Two bases · Outdoors + scenery</div>
           </article>
           <article class="route-card">
+            <figure class="route-card__photo">
+              <img
+                src="/assets/taiwan/tainan-temple.jpg"
+                alt="The colourful roof of a traditional temple in Tainan"
+                width="1200"
+                height="1600"
+                loading="lazy"
+              />
+            </figure>
             <span class="route-card__tag">Eat everything</span>
             <h3>Taipei + Tainan</h3>
             <p>Taipei first, then Tainan for temples, old streets and even more food.</p>
@@ -350,53 +386,66 @@
         <fieldset class="question" data-question>
           <legend>
             <span class="question__number">07</span>
-            <span class="question__title">Should the kids join the main celebration?</span>
+            <span class="question__title">Pick one weird thing</span>
           </legend>
-          <div class="choices choices--three">
+          <p class="question__description">Which one would you actually be up for?</p>
+          <div class="choices choices--two">
             <label class="choice">
-              <input type="radio" name="family-format" value="Everyone at the main event" required />
+              <input type="radio" name="wildcard" value="Indoor shrimp fishing" required />
               <span class="choice__body">
                 <span>
-                  <span class="choice__title">Yes, everyone together</span>
-                  <span class="choice__sub">Pick something that works for all ages</span>
+                  <span class="choice__title">Catch our dinner at an indoor shrimp pool</span>
+                  <span class="choice__sub">Taipei · Fish for prawns, grill the catch and order beers</span>
                 </span>
               </span>
             </label>
             <label class="choice">
-              <input type="radio" name="family-format" value="Family meal then adult drinks" />
+              <input type="radio" name="wildcard" value="Private KTV room" />
               <span class="choice__body">
                 <span>
-                  <span class="choice__title">Dinner together, drinks after</span>
-                  <span class="choice__sub">Start as a group, then split for the evening</span>
+                  <span class="choice__title">Take over a private KTV room</span>
+                  <span class="choice__sub">Taipei · Karaoke, drinks and late-night snacks</span>
                 </span>
               </span>
             </label>
             <label class="choice">
-              <input type="radio" name="family-format" value="Adults-only main event" />
+              <input type="radio" name="wildcard" value="Sunrise paddleboarding" />
               <span class="choice__body">
                 <span>
-                  <span class="choice__title">Adults only</span>
-                  <span class="choice__sub">Organise childcare for the main event</span>
+                  <span class="choice__title">Paddleboard at sunrise</span>
+                  <span class="choice__sub">Sun Moon Lake · A very early start with a very good view</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="wildcard" value="Ten Drum sugar factory" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">See a drum show in an old sugar factory</span>
+                  <span class="choice__sub">Tainan · Huge industrial spaces, live drumming and a giant slide</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="wildcard" value="Guanziling mud hot spring" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Get muddy in a hot spring</span>
+                  <span class="choice__sub">Tainan · Guanziling's naturally murky mineral water</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="wildcard" value="Qing court medicine park" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Dress up at a Qing court medicine park</span>
+                  <span class="choice__sub">Tainan · Costumes, herbal medicine and an excellent group photo</span>
                 </span>
               </span>
             </label>
           </div>
         </fieldset>
-
-        <section class="question question--comments">
-          <div class="question__heading">
-            <span class="question__number">Final word</span>
-            <h2>Anything the organiser needs to know?</h2>
-          </div>
-          <label class="sr-only" for="comments">Optional comments</label>
-          <textarea
-            class="text-input text-input--area"
-            id="comments"
-            name="comments"
-            rows="4"
-            placeholder="Children's ages, mobility needs, dietary requirements or a very strong opinion..."
-          ></textarea>
-        </section>
 
         <div class="submit-panel">
           <p>That should be enough to get us booking.</p>
