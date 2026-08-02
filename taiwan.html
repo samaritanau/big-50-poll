@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=4" />
+    <link rel="stylesheet" href="/styles.css?v=5" />
     <script src="/script.js?v=3" defer></script>
   </head>
   <body>
@@ -27,8 +27,8 @@
         <p class="hero__number hero__number--letters" aria-hidden="true">50</p>
         <h1>Here’s the plan.</h1>
         <p class="hero__intro">
-          Two nights in Taipei, three in Jiaoxi. Have a look, tell us what you’re
-          actually up for, and give us the numbers we need to price it properly.
+          Two nights in Taipei, three in Jiaoxi. Let us know who’s coming and which
+          activities each person wants to do, so we can get some prices.
         </p>
         <div class="hero__meta" role="group" aria-label="Trip details">
           <span>5 nights</span>
@@ -44,8 +44,8 @@
           <span class="question__number">The proposed itinerary</span>
           <h2 id="plan-title">Taipei first, then out to Yilan</h2>
           <p>
-            This is a real itinerary, not another blank-sheet poll. The mountain day,
-            bike route and hotel still need a vote.
+            The basic route is set. We still need to choose the mountain day, bike route
+            and hotel.
           </p>
         </div>
 
@@ -187,6 +187,43 @@
           </li>
         </ol>
 
+        <section class="stay-plan" aria-labelledby="stay-plan-title">
+          <div class="stay-plan__heading">
+            <span class="question__number">Where we stay</span>
+            <h3 id="stay-plan-title">Two hotels across five nights</h3>
+            <p>
+              We stay in one Taipei hotel for the first two nights, then one Jiaoxi
+              hotel for the last three. No changing hotels every morning.
+            </p>
+          </div>
+          <div class="stay-plan__grid">
+            <article class="stay-block">
+              <span class="stay-block__nights">Nights 1 and 2 · Mon 28 and Tue 29</span>
+              <h4>Taipei</h4>
+              <p>
+                <strong>First choice:</strong> City Suites Taipei Nanxi. It is close to
+                Ningxia Night Market and Dihua Street, with more room for twins and families.
+              </p>
+              <p>
+                <strong>Other option:</strong> citizenM Taipei North Gate. Better shared
+                spaces and a 24-hour bar, but the rooms are small and only have one king bed.
+              </p>
+            </article>
+            <article class="stay-block">
+              <span class="stay-block__nights">Nights 3, 4 and 5 · Wed 30 to Fri 2</span>
+              <h4>Jiaoxi</h4>
+              <p>
+                <strong>First choice:</strong> Yamagata Kaku. Central, good value and a
+                private hot-spring bath in every room.
+              </p>
+              <p>
+                <strong>Other option:</strong> MU Jiaoxi. A larger resort with roomy twins,
+                pools, a bar and more places for the group to hang out.
+              </p>
+            </article>
+          </div>
+        </section>
+
         <p class="booking-note">
           <strong>Still to be priced:</strong> hotels, vans, e-bikes and the birthday dinner.
           Numbers from this form are what let us get proper group quotes.
@@ -196,7 +233,7 @@
       <div class="progress-wrap" aria-hidden="true">
         <div class="progress-copy">
           <span>Your progress</span>
-          <span id="progress-label">0 of 14</span>
+          <span id="progress-label">0 of 15</span>
         </div>
         <div class="progress-track">
           <div class="progress-bar" id="progress-bar"></div>
@@ -585,7 +622,60 @@
 
         <fieldset class="question hotel-question" data-question>
           <legend>
-            <span class="question__number">11 · Three nights in Jiaoxi</span>
+            <span class="question__number">11 · Two nights in Taipei</span>
+            <span class="question__title">Which Taipei hotel should we price?</span>
+          </legend>
+          <p class="question__description">
+            Both suit the first two days. City Suites is the safer choice for a mixed
+            group. citizenM works best for couples who are happy with a compact room.
+          </p>
+
+          <div class="hotel-grid">
+            <article class="hotel-card">
+              <figure class="hotel-card__photo">
+                <img src="/assets/taiwan/itinerary/city-suites-nanxi.jpg" alt="A spacious guest room at City Suites Taipei Nanxi" width="1000" height="667" loading="lazy" />
+              </figure>
+              <label class="choice choice--hotel">
+                <input type="radio" name="taipei-hotel" value="City Suites Taipei Nanxi" required />
+                <span class="choice__body">
+                  <span>
+                    <span class="hotel-card__tag">Our pick</span>
+                    <span class="choice__title">City Suites Taipei Nanxi</span>
+                    <span class="choice__sub">Close to Ningxia and Dihua Street. Larger rooms and a calmer hotel setup make it easier for twins and families.</span>
+                    <span class="hotel-card__price">Exact group rate to come</span>
+                  </span>
+                </span>
+              </label>
+              <a class="external-link hotel-card__link" href="https://citysuites.com.tw/en/%E5%8F%B0%E5%8C%97%E5%8D%97%E8%A5%BF%E9%A4%A8/About" target="_blank" rel="noopener noreferrer">
+                Visit City Suites’ website <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span>
+              </a>
+            </article>
+
+            <article class="hotel-card">
+              <figure class="hotel-card__photo">
+                <img src="/assets/taiwan/itinerary/citizenm-taipei.jpg" alt="A compact king room with a city view at citizenM Taipei North Gate" width="1200" height="800" loading="lazy" />
+              </figure>
+              <label class="choice choice--hotel">
+                <input type="radio" name="taipei-hotel" value="citizenM Taipei North Gate" />
+                <span class="choice__body">
+                  <span>
+                    <span class="hotel-card__tag">More social</span>
+                    <span class="choice__title">citizenM Taipei North Gate</span>
+                    <span class="choice__sub">Near Beimen and Taipei Main, with a large shared lounge and a 24-hour canteen and bar. Rooms are compact and there are no twin beds.</span>
+                    <span class="hotel-card__price">Best for couples</span>
+                  </span>
+                </span>
+              </label>
+              <a class="external-link hotel-card__link" href="https://www.marriott.com/en-us/hotels/tpecm-citizenm-taipei-north-gate/" target="_blank" rel="noopener noreferrer">
+                Visit citizenM’s website <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span>
+              </a>
+            </article>
+          </div>
+        </fieldset>
+
+        <fieldset class="question hotel-question" data-question>
+          <legend>
+            <span class="question__number">12 · Three nights in Jiaoxi</span>
             <span class="question__title">Which hot-spring hotel should we price?</span>
           </legend>
           <p class="question__description">
@@ -638,7 +728,7 @@
 
         <fieldset class="question" data-question>
           <legend>
-            <span class="question__number">12 · Flight home</span>
+            <span class="question__number">13 · Flight home</span>
             <span class="question__title">Can you book an afternoon flight on 3 October?</span>
           </legend>
           <p class="question__description">
@@ -662,7 +752,7 @@
 
         <fieldset class="question" data-question data-dietary>
           <legend>
-            <span class="question__number">13 · Food planning</span>
+            <span class="question__number">14 · Food planning</span>
             <span class="question__title">Any dietary requirements in your household?</span>
           </legend>
           <div class="choices choices--binary choices--compact">
