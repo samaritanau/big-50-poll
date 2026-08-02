@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=5" />
+    <link rel="stylesheet" href="/styles.css?v=6" />
     <script src="/script.js?v=3" defer></script>
   </head>
   <body>
@@ -224,9 +224,66 @@
           </div>
         </section>
 
+        <section class="transport-costs" aria-labelledby="transport-costs-title">
+          <div class="transport-costs__heading">
+            <span class="question__number">Van budget</span>
+            <h3 id="transport-costs-title">Rough cost per 9-seat van</h3>
+            <p>
+              These prices are per van, not per person. A van takes up to eight passengers,
+              although large bags may make six or seven more comfortable on transfer days.
+            </p>
+          </div>
+          <div class="transport-costs__grid">
+            <article class="transport-cost">
+              <span class="transport-cost__day">Arrival · If flight times match</span>
+              <h4>Taoyuan Airport to Taipei</h4>
+              <strong class="transport-cost__price">AUD 60 to 120</strong>
+              <p>One-way airport pickup. Otherwise the Airport MRT is easy and cheap.</p>
+            </article>
+            <article class="transport-cost">
+              <span class="transport-cost__day">Wednesday · About 10 hours</span>
+              <h4>Taipei to Shifen to Jiaoxi</h4>
+              <strong class="transport-cost__price">AUD 290 to 360</strong>
+              <p>Driver, fuel, tolls and parking, with our bags staying in the van.</p>
+            </article>
+            <article class="transport-cost">
+              <span class="transport-cost__day">Thursday · About 8 to 10 hours</span>
+              <h4>Taipingshan mountain day</h4>
+              <strong class="transport-cost__price">AUD 220 to 310</strong>
+              <p>The closer Caoling fallback should be about AUD 210 to 270.</p>
+            </article>
+            <article class="transport-cost">
+              <span class="transport-cost__day">Friday · About 8 to 10 hours</span>
+              <h4>Coast, brewery, Kavalan and dinner</h4>
+              <strong class="transport-cost__price">AUD 210 to 290</strong>
+              <p>The van stays with us as we move between the day’s stops.</p>
+            </article>
+            <article class="transport-cost">
+              <span class="transport-cost__day">Saturday · One way</span>
+              <h4>Jiaoxi to Taoyuan Airport</h4>
+              <strong class="transport-cost__price">AUD 135 to 150</strong>
+              <p>A 20-seat minibus is roughly AUD 245 if the final group is too large for vans.</p>
+            </article>
+          </div>
+          <div class="transport-total">
+            <p>
+              <strong>Allow AUD 900 to 1,200 per van from Wednesday to Saturday.</strong>
+              With eight people in a van, that is roughly AUD 115 to 150 each for the main transport.
+            </p>
+            <div class="link-row">
+              <a class="external-link" href="https://www.ss687.com.tw/en/ilan-price.html" target="_blank" rel="noopener noreferrer">
+                See sample Yilan van rates <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span>
+              </a>
+              <a class="external-link" href="https://www.ss687.com.tw/en/airport.html" target="_blank" rel="noopener noreferrer">
+                See sample airport rates <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
         <p class="booking-note">
-          <strong>Still to be priced:</strong> hotels, vans, e-bikes and the Big 5-0 Dinner.
-          Numbers from this form are what let us get proper group quotes.
+          <strong>Still to be quoted:</strong> exact hotel and van group rates, e-bikes and the Big 5-0 Dinner.
+          Numbers from this form are what let us get proper quotes.
         </p>
       </section>
 
@@ -629,6 +686,10 @@
             Both suit the first two days. City Suites is the safer choice for a mixed
             group. citizenM works best for couples who are happy with a compact room.
           </p>
+          <p class="price-note">
+            Prices are per room. We have used TWD 1,000 as roughly AUD 45 and allowed
+            a little room for taxes and rate changes.
+          </p>
 
           <div class="hotel-grid">
             <article class="hotel-card">
@@ -642,7 +703,7 @@
                     <span class="hotel-card__tag">Our pick</span>
                     <span class="choice__title">City Suites Taipei Nanxi</span>
                     <span class="choice__sub">Close to Ningxia and Dihua Street. Larger rooms and a calmer hotel setup make it easier for twins and families.</span>
-                    <span class="hotel-card__price">Exact group rate to come</span>
+                    <span class="hotel-card__price">AUD 110 to 170 per night<br />AUD 220 to 340 for two nights</span>
                   </span>
                 </span>
               </label>
@@ -662,7 +723,7 @@
                     <span class="hotel-card__tag">More social</span>
                     <span class="choice__title">citizenM Taipei North Gate</span>
                     <span class="choice__sub">Near Beimen and Taipei Main, with a large shared lounge and a 24-hour canteen and bar. Rooms are compact and there are no twin beds.</span>
-                    <span class="hotel-card__price">Best for couples</span>
+                    <span class="hotel-card__price">AUD 130 to 200 per night<br />AUD 260 to 400 for two nights</span>
                   </span>
                 </span>
               </label>
@@ -680,7 +741,11 @@
           </legend>
           <p class="question__description">
             Both are central and have proper gender-separated public hot-spring baths,
-            with no swimsuits. The prices below are working ranges only. We will get an exact group quote after the headcount.
+            with no swimsuits. The prices below are per room and are working ranges only.
+            We will get an exact group quote after the headcount.
+          </p>
+          <p class="price-note">
+            The three-night total covers Wednesday, Thursday and Friday nights.
           </p>
 
           <div class="hotel-grid">
@@ -695,7 +760,7 @@
                     <span class="hotel-card__tag">Better value</span>
                     <span class="choice__title">Yamagata Kaku</span>
                     <span class="choice__sub">Japanese feel, private hot-spring bath in every room, and a proper public bath.</span>
-                    <span class="hotel-card__price">Rough guide: TWD 9,000 to 12,000 per room, per night</span>
+                    <span class="hotel-card__price">AUD 300 to 450 per night<br />AUD 900 to 1,350 for three nights</span>
                   </span>
                 </span>
               </label>
@@ -715,7 +780,7 @@
                     <span class="hotel-card__tag">The splurge</span>
                     <span class="choice__title">MU Jiaoxi</span>
                     <span class="choice__sub">Larger modern resort, roomy twins, public onsen, pools, bar and more places to hang out.</span>
-                    <span class="hotel-card__price">Rough guide: TWD 11,000 to 16,000 per room, per night</span>
+                    <span class="hotel-card__price">AUD 320 to 500 per night<br />AUD 960 to 1,500 for three nights</span>
                   </span>
                 </span>
               </label>

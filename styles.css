@@ -375,6 +375,93 @@ h1 {
   margin-bottom: 0;
 }
 
+.transport-costs {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.transport-costs__heading {
+  max-width: 720px;
+  margin-bottom: 16px;
+}
+
+.transport-costs__heading h3 {
+  margin: 7px 0 8px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  line-height: 1.1;
+}
+
+.transport-costs__heading p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.transport-costs__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.transport-cost {
+  padding: 19px;
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.transport-cost__day {
+  display: block;
+  color: var(--coral-dark);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.transport-cost h4 {
+  margin: 5px 0 9px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.15;
+}
+
+.transport-cost__price {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--forest-light);
+  font-size: 1rem;
+}
+
+.transport-cost p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.transport-total {
+  margin-top: 12px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  color: #664b11;
+  background: #fff3cf;
+}
+
+.transport-total p {
+  margin: 0 0 10px;
+  font-size: 0.86rem;
+}
+
+.price-note {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: var(--muted);
+  background: #f1f5f1;
+  font-size: 0.8rem;
+}
+
 .day-card {
   display: grid;
   grid-template-columns: 72px minmax(0, 1fr) minmax(190px, 260px);
@@ -1223,6 +1310,7 @@ footer {
   .field-grid--three,
   .hotel-grid,
   .stay-plan__grid,
+  .transport-costs__grid,
   .question-photo-grid {
     grid-template-columns: 1fr;
   }
