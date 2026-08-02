@@ -5,10 +5,29 @@ if (form) {
   const progressLabel = document.querySelector("#progress-label");
   const trackedQuestions = [...form.querySelectorAll("[data-question]")];
   const limitedQuestions = [...form.querySelectorAll("[data-limit]")];
+  const participationQuestions = [...form.querySelectorAll("[data-participation]")];
+  const dietaryQuestion = form.querySelector("[data-dietary]");
+  const partySizeInput = form.querySelector("#party-size");
+
+  const requiredFieldsAreComplete = (question) => {
+    const requiredFields = [...question.querySelectorAll("input[required], textarea[required], select[required]")];
+    const requiredRadios = requiredFields.filter((field) => field.type === "radio");
+    const otherFields = requiredFields.filter((field) => field.type !== "radio");
+    const radioGroups = [...new Set(requiredRadios.map((radio) => radio.name))];
+
+    const radiosAreComplete = radioGroups.every((name) =>
+      [...question.querySelectorAll("input[type='radio']")].some(
+        (radio) => radio.name === name && radio.checked,
+      ),
+    );
+
+    return radiosAreComplete && otherFields.every((field) => field.value.trim() && field.checkValidity());
+  };
 
   const questionIsComplete = (question) => {
-    const textInput = question.querySelector("input[type='text']");
-    if (textInput) return textInput.value.trim().length > 0;
+    if (question.matches("[data-household], [data-participation], [data-dietary]")) {
+      return requiredFieldsAreComplete(question);
+    }
 
     const dateInputs = [...question.querySelectorAll("input[type='date']")];
     if (dateInputs.length) {
@@ -24,13 +43,18 @@ if (form) {
       return question.querySelectorAll("input[type='checkbox']:checked").length === limit;
     }
 
+    const textInput = question.querySelector("input[type='text']");
+    if (textInput) return textInput.value.trim().length > 0;
+
     return Boolean(question.querySelector("input[type='radio']:checked"));
   };
 
   const updateProgress = () => {
+    if (!progressBar || !progressLabel) return;
+
     const completed = trackedQuestions.filter(questionIsComplete).length;
     const total = trackedQuestions.length;
-    const percentage = Math.round((completed / total) * 100);
+    const percentage = total ? Math.round((completed / total) * 100) : 0;
 
     progressBar.style.width = `${percentage}%`;
     progressLabel.textContent = `${completed} of ${total}`;
@@ -41,8 +65,9 @@ if (form) {
     const checkboxes = [...question.querySelectorAll("input[type='checkbox']")];
     const selected = checkboxes.filter((checkbox) => checkbox.checked);
     const counter = question.querySelector(".selection-count");
+    const error = question.querySelector(".field-error");
 
-    counter.textContent = `${selected.length} of ${limit} selected`;
+    if (counter) counter.textContent = `${selected.length} of ${limit} selected`;
 
     checkboxes.forEach((checkbox) => {
       checkbox.disabled = selected.length >= limit && !checkbox.checked;
@@ -50,8 +75,54 @@ if (form) {
 
     if (selected.length === limit) {
       question.classList.remove("has-error");
-      question.querySelector(".field-error").classList.remove("is-visible");
+      error?.classList.remove("is-visible");
     }
+  };
+
+  const householdMaximum = () => {
+    const householdSize = Number(partySizeInput?.value || 0);
+    return householdSize > 0 ? householdSize : 12;
+  };
+
+  const updateParticipantMaximums = () => {
+    const maximum = householdMaximum();
+    participationQuestions.forEach((question) => {
+      const countInput = question.querySelector("[data-participant-count]");
+      if (countInput) countInput.max = String(maximum);
+    });
+  };
+
+  const updateParticipationQuestion = (question) => {
+    const selected = question.querySelector("input[type='radio']:checked");
+    const participantWrap = question.querySelector("[data-participant-wrap]");
+    const countInput = question.querySelector("[data-participant-count]");
+    const isJoining = selected?.value === "Yes";
+
+    if (!participantWrap || !countInput) return;
+
+    participantWrap.hidden = !isJoining;
+    countInput.disabled = !isJoining;
+    countInput.required = isJoining;
+    countInput.max = String(householdMaximum());
+
+    if (!isJoining) countInput.value = "";
+  };
+
+  const updateDietaryQuestion = () => {
+    if (!dietaryQuestion) return;
+
+    const selected = dietaryQuestion.querySelector("input[type='radio']:checked");
+    const detailsWrap = dietaryQuestion.querySelector("[data-dietary-wrap]");
+    const detailsInput = detailsWrap?.querySelector("input");
+    const hasRequirements = selected?.value === "Yes";
+
+    if (!detailsWrap || !detailsInput) return;
+
+    detailsWrap.hidden = !hasRequirements;
+    detailsInput.disabled = !hasRequirements;
+    detailsInput.required = hasRequirements;
+
+    if (!hasRequirements) detailsInput.value = "";
   };
 
   const dateRange = form.querySelector("[data-date-range]");
@@ -60,31 +131,45 @@ if (form) {
     if (!dateRange) return true;
 
     const question = dateRange.closest(".question");
-    const from = dateRange.querySelector("#available-from");
-    const until = dateRange.querySelector("#available-until");
-    const error = question.querySelector(".field-error");
-    const datesAreReversed = Boolean(from.value && until.value && from.value > until.value);
+    const [from, until] = dateRange.querySelectorAll("input[type='date']");
+    const error = question?.querySelector(".field-error");
+    const datesAreReversed = Boolean(from?.value && until?.value && from.value > until.value);
 
-    until.setCustomValidity(datesAreReversed ? "Return date must be on or after departure date." : "");
-    question.classList.toggle("has-error", datesAreReversed);
-    error.textContent = datesAreReversed ? "Return date must be on or after departure date." : "";
-    error.classList.toggle("is-visible", datesAreReversed);
+    until?.setCustomValidity(datesAreReversed ? "Return date must be on or after departure date." : "");
+    question?.classList.toggle("has-error", datesAreReversed);
+
+    if (error) {
+      error.textContent = datesAreReversed ? "Return date must be on or after departure date." : "";
+      error.classList.toggle("is-visible", datesAreReversed);
+    }
 
     return !datesAreReversed;
   };
 
   limitedQuestions.forEach(updateLimitedQuestion);
+  updateParticipantMaximums();
+  participationQuestions.forEach(updateParticipationQuestion);
+  updateDietaryQuestion();
   updateProgress();
 
   form.addEventListener("input", (event) => {
     const limitedQuestion = event.target.closest("[data-limit]");
+    const participationQuestion = event.target.closest("[data-participation]");
+
     if (limitedQuestion) updateLimitedQuestion(limitedQuestion);
+    if (participationQuestion) updateParticipationQuestion(participationQuestion);
+    if (event.target === partySizeInput) updateParticipantMaximums();
+    if (event.target.closest("[data-dietary]")) updateDietaryQuestion();
     if (event.target.matches("input[type='date']")) updateDateRangeValidity();
+
     updateProgress();
   });
 
   form.addEventListener("submit", (event) => {
     let firstInvalidQuestion = null;
+
+    participationQuestions.forEach(updateParticipationQuestion);
+    updateDietaryQuestion();
 
     if (!updateDateRangeValidity()) {
       event.preventDefault();
@@ -99,8 +184,10 @@ if (form) {
       if (selectedCount !== limit) {
         event.preventDefault();
         question.classList.add("has-error");
-        error.textContent = `Please select exactly ${limit}.`;
-        error.classList.add("is-visible");
+        if (error) {
+          error.textContent = `Please select exactly ${limit}.`;
+          error.classList.add("is-visible");
+        }
         firstInvalidQuestion ||= question;
       }
     });
