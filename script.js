@@ -6,7 +6,6 @@ if (form) {
   const trackedQuestions = [...form.querySelectorAll("[data-question]")];
   const limitedQuestions = [...form.querySelectorAll("[data-limit]")];
   const participationQuestions = [...form.querySelectorAll("[data-participation]")];
-  const dietaryQuestion = form.querySelector("[data-dietary]");
   const partySizeInput = form.querySelector("#party-size");
 
   const requiredFieldsAreComplete = (question) => {
@@ -25,7 +24,7 @@ if (form) {
   };
 
   const questionIsComplete = (question) => {
-    if (question.matches("[data-household], [data-participation], [data-dietary]")) {
+    if (question.matches("[data-household], [data-participation]")) {
       return requiredFieldsAreComplete(question);
     }
 
@@ -108,23 +107,6 @@ if (form) {
     if (!isJoining) countInput.value = "";
   };
 
-  const updateDietaryQuestion = () => {
-    if (!dietaryQuestion) return;
-
-    const selected = dietaryQuestion.querySelector("input[type='radio']:checked");
-    const detailsWrap = dietaryQuestion.querySelector("[data-dietary-wrap]");
-    const detailsInput = detailsWrap?.querySelector("input");
-    const hasRequirements = selected?.value === "Yes";
-
-    if (!detailsWrap || !detailsInput) return;
-
-    detailsWrap.hidden = !hasRequirements;
-    detailsInput.disabled = !hasRequirements;
-    detailsInput.required = hasRequirements;
-
-    if (!hasRequirements) detailsInput.value = "";
-  };
-
   const dateRange = form.querySelector("[data-date-range]");
 
   const updateDateRangeValidity = () => {
@@ -149,7 +131,6 @@ if (form) {
   limitedQuestions.forEach(updateLimitedQuestion);
   updateParticipantMaximums();
   participationQuestions.forEach(updateParticipationQuestion);
-  updateDietaryQuestion();
   updateProgress();
 
   form.addEventListener("input", (event) => {
@@ -159,7 +140,6 @@ if (form) {
     if (limitedQuestion) updateLimitedQuestion(limitedQuestion);
     if (participationQuestion) updateParticipationQuestion(participationQuestion);
     if (event.target === partySizeInput) updateParticipantMaximums();
-    if (event.target.closest("[data-dietary]")) updateDietaryQuestion();
     if (event.target.matches("input[type='date']")) updateDateRangeValidity();
 
     updateProgress();
@@ -169,7 +149,6 @@ if (form) {
     let firstInvalidQuestion = null;
 
     participationQuestions.forEach(updateParticipationQuestion);
-    updateDietaryQuestion();
 
     if (!updateDateRangeValidity()) {
       event.preventDefault();
