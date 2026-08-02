@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Round two of the Big 5-0 trip poll: choose what our Taiwan celebration should look like."
+    />
+    <meta name="theme-color" content="#123c3a" />
+    <title>Taiwan Round Two | The Big 5-0 Trip</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=2" />
+    <script src="/script.js?v=2" defer></script>
+  </head>
+  <body>
+    <header class="hero hero--taiwan">
+      <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+      <div class="shell hero__content">
+        <div class="eyebrow">Taiwan won 4 votes to 0</div>
+        <p class="hero__number hero__number--letters" aria-hidden="true">TW</p>
+        <h1>Now, what kind of Taiwan?</h1>
+        <p class="hero__intro">
+          The destination is settled. Seven quick choices will turn it into an
+          actual birthday trip.
+        </p>
+        <div class="hero__meta" aria-label="Poll details">
+          <span>About 2 minutes</span>
+          <span>September 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="shell main-content">
+      <section class="route-intro" aria-labelledby="route-title">
+        <div class="route-intro__heading">
+          <span class="question__number">Four good versions</span>
+          <h2 id="route-title">The trips we are choosing between</h2>
+          <p>Each works in five nights, with two extra nights for anyone staying longer.</p>
+        </div>
+
+        <div class="route-grid">
+          <article class="route-card">
+            <span class="route-card__tag">Least logistics</span>
+            <h3>Taipei home base</h3>
+            <p>Food, bars and culture, with day trips to Beitou, Jiufen and the north coast.</p>
+            <div class="route-card__meta">One hotel · Maximum lunch time</div>
+          </article>
+          <article class="route-card route-card--featured">
+            <span class="route-card__tag">Best overall fit</span>
+            <h3>Taipei + Jiaoxi</h3>
+            <p>City energy followed by Yilan scenery, hot springs and a whisky day.</p>
+            <div class="route-card__meta">Two bases · Food + relaxation</div>
+          </article>
+          <article class="route-card">
+            <span class="route-card__tag">Most scenic</span>
+            <h3>Taipei + Sun Moon Lake</h3>
+            <p>Taipei first, then lakeside cycling, tea country and a slower finish.</p>
+            <div class="route-card__meta">Two bases · Outdoors + scenery</div>
+          </article>
+          <article class="route-card">
+            <span class="route-card__tag">Most delicious</span>
+            <h3>Taipei + Tainan</h3>
+            <p>Two great food cities, historic lanes and temples, linked by fast train.</p>
+            <div class="route-card__meta">Two bases · Food + culture</div>
+          </article>
+        </div>
+
+        <p class="booking-note">
+          <strong>Booking note:</strong> the opening weekend follows Taiwan's
+          Mid-Autumn Festival and runs into the 28 September public holiday, so the
+          group should book promptly once this vote closes.
+        </p>
+      </section>
+
+      <div class="progress-wrap" aria-hidden="true">
+        <div class="progress-copy">
+          <span>Your progress</span>
+          <span id="progress-label">0 of 8</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+
+      <form
+        class="poll-form"
+        id="trip-poll"
+        name="taiwan-preferences"
+        method="POST"
+        action="/taiwan-thanks.html"
+        data-netlify="true"
+      >
+        <section class="question question--identity" data-question>
+          <div class="question__heading">
+            <span class="question__number">First up</span>
+            <h2>Who are you?</h2>
+          </div>
+          <label class="text-label" for="name">Your name</label>
+          <input
+            class="text-input"
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            placeholder="So we know who voted"
+            required
+          />
+        </section>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">01</span>
+            <span class="question__title">Choose the trip shape</span>
+          </legend>
+          <div class="choices choices--two choices--routes">
+            <label class="choice choice--route">
+              <input type="radio" name="trip-shape" value="Taipei home base" required />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Taipei home base</span>
+                  <span class="choice__sub">One hotel, brilliant food and several day trips</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice choice--route">
+              <input type="radio" name="trip-shape" value="Taipei and Jiaoxi" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Taipei + Jiaoxi</span>
+                  <span class="choice__sub">City, hot springs, Yilan scenery and whisky</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice choice--route">
+              <input type="radio" name="trip-shape" value="Taipei and Sun Moon Lake" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Taipei + Sun Moon Lake</span>
+                  <span class="choice__sub">City first, followed by cycling, tea and lake views</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice choice--route">
+              <input type="radio" name="trip-shape" value="Taipei and Tainan" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Taipei + Tainan</span>
+                  <span class="choice__sub">Two food capitals with history and fast-train travel</span>
+                </span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">02</span>
+            <span class="question__title">Which trip are you committing to?</span>
+          </legend>
+          <div class="choices choices--binary">
+            <label class="choice">
+              <input type="radio" name="trip-length" value="5-night core trip" required />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">5-night core trip</span>
+                  <span class="choice__sub">Aim for 28 September to 3 October</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="trip-length" value="7-night full trip" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">7-night full trip</span>
+                  <span class="choice__sub">Aim for 26 September to 3 October</span>
+                </span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">03</span>
+            <span class="question__title">What should headline the 50th celebration?</span>
+          </legend>
+          <div class="choices choices--two">
+            <label class="choice">
+              <input type="radio" name="birthday-headliner" value="Private feast" required />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">A private feast</span>
+                  <span class="choice__sub">A serious lunch or dinner with a private room</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="birthday-headliner" value="Hot spring resort night" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">A hot spring resort night</span>
+                  <span class="choice__sub">Baths, drinks and dinner without going anywhere</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="birthday-headliner" value="Whisky tasting and long lunch" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Whisky tasting + long lunch</span>
+                  <span class="choice__sub">A private driver and a full Yilan day</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="birthday-headliner" value="Scenic active day" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">A scenic active day</span>
+                  <span class="choice__sub">Cycling or hiking followed by a celebratory dinner</span>
+                </span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">04</span>
+            <span class="question__title">Choose the pace</span>
+          </legend>
+          <div class="choices choices--three">
+            <label class="choice">
+              <input type="radio" name="pace" value="Slow and social" required />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Slow and social</span>
+                  <span class="choice__sub">One main plan each day</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="pace" value="Balanced" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Balanced</span>
+                  <span class="choice__sub">Explore, then leave room for lunch and drinks</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="pace" value="Pack in the highlights" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Pack in the highlights</span>
+                  <span class="choice__sub">Early starts and full days</span>
+                </span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question data-limit="3">
+          <legend>
+            <span class="question__number">05</span>
+            <span class="question__title">Pick your three must-do experiences</span>
+          </legend>
+          <div class="question__hint">
+            Select exactly three
+            <span class="selection-count" aria-live="polite">0 of 3 selected</span>
+          </div>
+          <div class="choices choices--ingredients">
+            <label class="choice">
+              <input type="checkbox" name="must-do-experiences[]" value="Night-market food crawl" />
+              <span class="choice__body"><span class="choice__title">Night-market food crawl</span></span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="must-do-experiences[]" value="Private celebratory meal" />
+              <span class="choice__body"><span class="choice__title">Private celebratory meal</span></span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="must-do-experiences[]" value="Hot springs" />
+              <span class="choice__body"><span class="choice__title">Hot springs</span></span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="must-do-experiences[]" value="Whisky, beer or tea tasting" />
+              <span class="choice__body"><span class="choice__title">Whisky, beer or tea tasting</span></span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="must-do-experiences[]" value="Easy hike or nature day" />
+              <span class="choice__body"><span class="choice__title">Easy hike or nature day</span></span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="must-do-experiences[]" value="Scenic cycling" />
+              <span class="choice__body"><span class="choice__title">Scenic cycling</span></span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="must-do-experiences[]" value="Temples and historic neighbourhoods" />
+              <span class="choice__body"><span class="choice__title">Temples + historic neighbourhoods</span></span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="must-do-experiences[]" value="Shopping, bars and late nights" />
+              <span class="choice__body"><span class="choice__title">Shopping, bars + late nights</span></span>
+            </label>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">06</span>
+            <span class="question__title">How should we eat?</span>
+          </legend>
+          <div class="choices choices--three">
+            <label class="choice">
+              <input type="radio" name="food-style" value="Mostly booked restaurants" required />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Mostly booked restaurants</span>
+                  <span class="choice__sub">Comfort, long meals and guaranteed tables</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="food-style" value="Restaurants and street food" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Restaurants + street food</span>
+                  <span class="choice__sub">One proper booking and one casual meal most days</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="food-style" value="Market and snack adventure" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Market + snack adventure</span>
+                  <span class="choice__sub">Follow our noses and eat constantly</span>
+                </span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" data-question>
+          <legend>
+            <span class="question__number">07</span>
+            <span class="question__title">How should the main celebration handle children?</span>
+          </legend>
+          <div class="choices choices--three">
+            <label class="choice">
+              <input type="radio" name="family-format" value="Everyone at the main event" required />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Everyone at the main event</span>
+                  <span class="choice__sub">Choose a celebration that works for all ages</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="family-format" value="Family meal then adult drinks" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Family meal, then adult drinks</span>
+                  <span class="choice__sub">Celebrate together before the evening splits</span>
+                </span>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="family-format" value="Adults-only main event" />
+              <span class="choice__body">
+                <span>
+                  <span class="choice__title">Adults-only main event</span>
+                  <span class="choice__sub">Organise childcare for the headline celebration</span>
+                </span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <section class="question question--comments">
+          <div class="question__heading">
+            <span class="question__number">Final word</span>
+            <h2>Anything the organiser needs to know?</h2>
+          </div>
+          <label class="sr-only" for="comments">Optional comments</label>
+          <textarea
+            class="text-input text-input--area"
+            id="comments"
+            name="comments"
+            rows="4"
+            placeholder="Children's ages, mobility needs, dietary requirements or a very strong opinion..."
+          ></textarea>
+        </section>
+
+        <div class="submit-panel">
+          <p>Ready to turn Taiwan into a plan?</p>
+          <button class="submit-button" type="submit">
+            Submit my Taiwan vote
+            <span aria-hidden="true">→</span>
+          </button>
+          <p class="submit-note">Every core question requires a real choice.</p>
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <div class="shell">Taiwan won. Now we make it excellent.</div>
+    </footer>
+  </body>
+</html>
