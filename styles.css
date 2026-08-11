@@ -507,6 +507,52 @@ h1 {
   padding: 22px;
 }
 
+.itinerary-status {
+  display: inline-flex;
+  margin: 0 0 8px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #1a5a45;
+  background: #e7f4ea;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.itinerary-status--open {
+  color: #76510b;
+  background: #fff0be;
+}
+
+.itinerary-detail {
+  margin: 14px 0 18px;
+  padding: 16px;
+  border: 1px solid #cfe2d8;
+  border-radius: 13px;
+  background: #f1f8f4;
+}
+
+.itinerary-detail--open {
+  border-color: #ead59b;
+  background: #fff9e8;
+}
+
+.itinerary-detail h4 {
+  margin: 0 0 7px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.02rem;
+  line-height: 1.2;
+}
+
+.itinerary-detail p {
+  margin-bottom: 9px;
+}
+
+.itinerary-detail .link-row {
+  margin-top: 10px;
+}
+
 .day-card__place {
   display: block;
   margin-bottom: 6px;

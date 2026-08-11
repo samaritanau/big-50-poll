@@ -4,6 +4,7 @@ A lightweight static poll that stores responses using Netlify Forms.
 
 - `/` contains the original destination poll.
 - `/taiwan.html` contains the second-round Taiwan itinerary poll.
+- `/itinerary.html` contains the current agreed Taiwan itinerary.
 
 ## Deploy to Netlify
 
